@@ -4,34 +4,46 @@
 l=30
 
 # Set time to allow for switching between tasks in minutes
-w=3
+w=5
 
+# Initialize non-user defined variables
+taskGreeting="Task Switch Reminder Initialized. Task intervals are ${l} minutes. Breaks are ${w} minutes. Start first task now."
+breakGreeting="Attention: Time for a break. Get up and stretch, then come back and find a new task. You have ${w} minutes starting now."
+newTask="Begin your new task now."
 i=0
-j=1
+j=0
 x=0
-s=$((l * 60))
-t=$((w * 60))
+s=$(($l * 60))
+t=$(($w * 60))
 
-say Initializing task switch reminder program. Task intervals are $l minutes, and breaks between tasks are $w minutes. Beginning first task. 
+clear
+echo $taskGreeting
+say $taskGreeting
 while true; do
 clear
 until [ $i -gt $s ]; do
 sleep 1
 let x=$s-$i
-echo -ne $x
-echo -ne " seconds until task switch...\r"
+echo -ne $(($x / 60)):$(($x % 60))
+echo -ne " until break time...\r"
 let i+=1
 done
-say Attention: It is time to switch tasks. You have $w minutes to save your work and find a new task!
-sleep 0.1
+
 clear
-let j=1
-until [ $j -gt $w ]; do
-# say $j
-sleep 0.25
+echo $breakGreeting
+say $breakGreeting
+clear
+until [ $j -gt $t ]; do
+sleep 1
+let x=$t-$j
+echo -ne $(($x / 60)):$(($x % 60))
+echo -ne " until break time is over...\r"
 let j+=1
 done
-say Begin your new task now! You have $l minutes.
+
+clear
+echo $newTask
+say $newTask
 let i=0
 let j=1
 done
