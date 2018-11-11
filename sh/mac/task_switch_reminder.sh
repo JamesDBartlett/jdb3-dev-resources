@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Set time length for each task segment in minutes
-l=30
+l=45
 
 # Set time to allow for switching between tasks in minutes
 w=5
 
 # Initialize non-user defined variables
 taskGreeting="Task Switch Reminder Initialized. Task intervals are ${l} minutes. Breaks are ${w} minutes. Start first task now."
-breakGreeting="Attention: Time for a break. Get up and stretch, then come back and find a new task. You have ${w} minutes starting now."
+breakGreeting="Attention: It's time for a break. Get up and stretch, then come back and find a new task. You have ${w} minutes starting now."
 newTask="Break time is over. Begin your new task now."
 i=0
 j=0
