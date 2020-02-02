@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set time length for each task segment in minutes
-l=45
+l=40
 
 # Set time to allow for switching between tasks in minutes
 w=5
